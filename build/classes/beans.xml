@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd 
+        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+	<!-- 添加sessionFactory bane ，注意，该类是Spring提供的 -->
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean"
+		scope="prototype">
+		<!-- 注入Hibernate 配置文件路径,前面要加上 classpath: -->
+		<property name="configLocation" value="classpath:hibernate.cfg.xml" />
+	</bean>
+
+	<!-- datasource -->
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://localhost:3306/studyabroad" />
+		<property name="username" value="root" />
+		<property name="password" value="967468" />
+	</bean>
+
+	<!-- 声明式事务 -->
+	<!-- 配置事务管理器 -->
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+	<!-- 配置事务通知 -->
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<!-- 配置哪些方法使用什么事务，配置事务的传播特性 -->
+			<tx:method name="insert*" propagation="REQUIRED" />
+			<tx:method name="select*" propagation="REQUIRED" />
+			<tx:method name="up*" propagation="REQUIRED" />
+			<tx:method name="find*" propagation="REQUIRED" />
+			<tx:method name="first*" propagation="REQUIRED" />
+			<tx:method name="down*" propagation="REQUIRED" />
+		</tx:attributes>
+	</tx:advice>
+	<!-- 如果当前有事务就用当前的事务，没有就重新开启一个事务 -->
+	<aop:config>
+		<aop:pointcut expression="execution(* dao.*.*(..))" id="pointcut" />
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="pointcut" />
+	</aop:config>
+	<!-- <aop:aspectj-autoproxy proxy-target-class="true" /> -->
+	<!-- 声明式事务配置结束 -->
+
+	<bean id="questionDao" name="questionDao" class="dao.QuestionDao">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+
+	<bean id="answerDao" name="answerDao" class="dao.AnswerDao">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+		<property name="questionDao" ref="questionDao"></property>
+		<property name="answer_supportDao" ref="answer_supportDao"></property>
+	</bean>
+
+	<bean id="answer_supportDao" name="answer_supportDao" class="dao.Answer_supportDao">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+		<property name="answerDao" ref="answerDao"></property>
+	</bean>
+
+</beans>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="table.Question" table="question">
+		<!-- 标识 -->
+		<id name="question_id">
+			<generator class="increment" />
+		</id>
+		<!-- 提问用户id -->
+		<property name="question_user_id" not-null="true" />
+		<!-- 浏览数 -->
+		<property name="visit_count" />
+		<!-- 回答数 -->
+		<property name="answer_count" />
+		<!-- 问题标题 -->
+		<property name="question_title" not-null="true" />
+		<!-- 问题内容 -->
+		<property name="question_info" not-null="true" />
+		<!-- 提问时间 -->
+		<property name="question_date" not-null="true" />
+		<!-- 路线id -->
+		<property name="tour_id" not-null="true" />
+
+		<set name="answers" cascade="all">
+			<key column="question_id"></key>
+			<one-to-many class="table.Answer" />
+		</set>
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="table.Answer" table="answer">
+		<!-- 标识 -->
+		<id name="answer_id">
+			<generator class="increment" />
+		</id>
+		<!-- 回答用户id -->
+		<property name="answer_user_id" not-null="true" />
+		<!-- 点赞数 -->
+		<property name="support_count" />
+		<!-- 回答内容 -->
+		<property name="answer_info" not-null="true" />
+		<!-- 回答时间 -->
+		<property name="answer_date" not-null="true" />
+		<!-- 外键 -->
+		<property name="question_id"></property>
+		<!-- 显示是否点赞 -->
+		<!-- <property name="showState" not-null="true"/> -->
+		<!-- 多对一映射 -->
+		<!-- <many-to-one name="question" class="table.Question" lazy="false" not-found="ignore"> 
+			<column name="question_id"/> </many-to-one> -->
+
+
+	</class>
+</hibernate-mapping>

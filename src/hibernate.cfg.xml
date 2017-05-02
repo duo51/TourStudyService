@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>
+		<!-- 数据库驱动 -->
+		<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+		<!-- 数据库连接的URL -->
+		<property name="connection.url">jdbc:mysql://localhost:3306/study_tour</property>
+		<!-- 数据库连接用户名 -->
+		<property name="connection.username">root</property>
+		<!-- 数据库连接密码 -->
+		<property name="connection.password">215lliilan</property>
+		<!-- Hibernate方言 -->
+		<property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+		<!-- 打印SQL语句 -->
+		<property name="show_sql">true</property>
+		<!-- spring整合hibernate要添加自动提交insert和update操作的语句才能实现功能 -->
+		<property name="connection.autocommit">true</property>
+		<!-- 自动建表 -->
+		<!-- <property name="hibernate.hbm2ddl.auto">create</property> -->
+		<!-- 映射文件 -->
+		<mapping resource="table/Question.hbm.xml" />
+		<mapping resource="table/Answer.hbm.xml" />
+		<mapping resource="table/Answer_support.hbm.xml" />
+		<mapping class="table.Question" />
+		<mapping class="table.Answer" />
+		<mapping class="table.Answer_support" />
+	</session-factory>
+</hibernate-configuration>
