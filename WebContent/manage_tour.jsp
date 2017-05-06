@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
-	import="java.util.*,com.tour.tour.*" pageEncoding="utf-8"%>
+	import="java.util.*,tour.*" pageEncoding="utf-8"%>
 <%@include file="managehead.jsp"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -8,6 +8,9 @@
 <title>游学信息管理界面</title>
 </head>
 <body>
+	<table border="1">
+		<tr><td><a href="tour_insert.jsp">添加游学路线</a></td></tr>
+	</table>
 	<table border="1" width="100%" height="100%">
 		<tr>
 			<td>游学路线ID</td>
@@ -20,10 +23,9 @@
 			<td>报名开始时间</td>
 			<td>游学报名截至时间</td>
 			<td>游学出发时间</td>
-			<td>游学需要的人数</td>
-			<td>游学已经报名人数</td>
-			<td>游学需要支付的订金</td>
-			<td>游学简介</td>
+			<td>游学需要人数</td>
+			<td>游学已报名人数</td>
+			<td>游学需支付订金</td>
 			<td>游学状态</td>
 			<td>游学天数</td>
 		</tr>
@@ -46,7 +48,6 @@
 			int tourNeedPerson = tour.getTourNeedPerson();
 			int tourSigned = tour.getTourSigned();
 			int tourDeposit = tour.getTourDeposit();
-			String tourInfo = tour.getTourInfo();
 			int tourStatus = tour.getTourSigned();
 			String tourDay = tour.getTourDay();
 		%>
@@ -64,7 +65,6 @@
 			<td><%=tourNeedPerson %></td>
 			<td><%=tourSigned %></td>
 			<td><%=tourDeposit %></td>
-			<td><%=tourInfo %></td>
 			<td><%=tourStatus %></td>
 			<td><%=tourDay %></td>
 			<td><a href="tour_update.jsp?tourId=<%=tourId%>">修改</a>&nbsp;<a

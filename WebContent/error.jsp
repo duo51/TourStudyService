@@ -4,10 +4,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Insert title here</title>
+<title>游学</title>
 </head>
 <body>
-	哎呀，页面找不到了，带你去首页看看吧
+	哎呀，页面找不到了，带你回异次元看看吧
 	<% response.setHeader("refresh", "2;URL=login.jsp"); %>
 </body>
 </html>

@@ -9,7 +9,7 @@
 <body>
 	<center>
 		<h2>游学信息录入</h2>
-		<form name="userinfo" action="reg_check.jsp" method="post">
+		<form name="userinfo" action="InsertTourServlet" method="post">
 			<table border="1" style="font-size: 20px">
 				<tr>
 					<td>游学路线名称：</td>
@@ -18,25 +18,19 @@
 				<tr>
 					<td>游学类型：</td>
 					<td><select name="tourStyle">
-							<option value="s1">背景提升</option>
-							<option value="s2">名校课堂</option>
-							<option value="s3">留学选校</option>
-							<option value="s4">就业实习</option>
-							<option value="s5">环球全真</option>
-							<option value="s6">主题特色</option>
-							<option value="s7">名校假期课程</option>
-							<option value="s8">一带一路</option>
+							<option value="背景提升">背景提升</option>
+							<option value="名校课堂">名校课堂</option>
+							<option value="留学选校">留学选校</option>
+							<option value="就业实习">就业实习</option>
+							<option value="环球全真">环球全真</option>
+							<option value="主题特色">主题特色</option>
+							<option value="名校假期课程">名校假期课程</option>
+							<option value="一带一路">一带一路</option>
 					</select></td>
 				</tr>
 				<tr>
 					<td>游学国家：</td>
-					<td><select name="tourCountry">
-							<option value="c1">美国</option>
-							<option value="c2">加拿大</option>
-							<option value="c3">英国</option>
-							<option value="c4">澳新</option>
-							<option value="c5">其他</option>
-					</select></td>
+					<td><input type="text" name="tourCountry" class="reqd"></td>
 				</tr>
 				<tr>
 					<td>游学出发城市：</td>
@@ -59,6 +53,10 @@
 					<td><input type="text" name="tourEndSign" class="reqd"></td>
 				</tr>
 				<tr>
+					<td>游学出发时间:</td>
+					<td><input type="text" name="tourGo" class="reqd"></td>
+				</tr>
+				<tr>
 					<td>游学需要人数：</td>
 					<td><input type="text" name="tourNeedPerson" class="reqd"></td>
 				</tr>
@@ -67,16 +65,16 @@
 					<td><input type="text" name="tourDeposit" class="reqd"></td>
 				</tr>
 				<tr>
-					<td>游学简介：</td>
-					<td><input type="text" name="tourInfo" class="reqd"></td>
-				</tr>
-				<tr>
-					<td>游学状态：</td>
-					<td><input type="text" name="tourStatus" class="reqd"></td>
-				</tr>
-				<tr>
 					<td>游学总计天数：</td>
 					<td><input type="text" name="tourDay" class="reqd"></td>
+				</tr>
+				<tr>
+					<td>游学缩略图：</td>
+					<td><input type="text" name="tourImage" class="reqd"></td>
+				</tr>
+				<tr>
+					<td>游学简介：</td>
+					<td><input type="text" name="tourInfo" class="reqd"></td>
 				</tr>
 
 				<!-- 验证码 -->

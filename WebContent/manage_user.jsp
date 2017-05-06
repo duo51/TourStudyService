@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
-	import="java.util.*,com.tour.user.*,com.tour.util.*"
+	import="java.util.*,user.*,util.*"
 	pageEncoding="utf-8"%>
 <%@include file="managehead.jsp"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -45,11 +45,11 @@
 			<td><%=userCity %></td>
 			<td><%=userStatus %></td>
 			<td><%=userDate %></td>
-			<td><a href="DropUserServlet?userId=<%=userId %>">修改</a>&nbsp;<a
+			<td><a href="user_update.jsp?userId=<%=userId %>">修改</a>&nbsp;<a
 				href="DropUserServlet?userId=<%=userId%>">删除</a></td>
 		</tr>
 		<%
-			}
+		}
 	
 	%>
 	</table>

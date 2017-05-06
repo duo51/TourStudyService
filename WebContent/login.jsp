@@ -3,7 +3,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>游啊游</title>
+<title>游学</title>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
@@ -15,9 +15,8 @@
 </head>
 <body>
 	<div align="center">
-		<h2 align="center">登录</h2>
+		<h2 align="center">游学后台管理系统</h2>
 		<form name="userinfo" action="LoginServlet" method="post">
-			<input type="hidden" name="flag" value="web" />
 			<table border="1">
 				<tr>
 					<td>用户名：</td>
@@ -28,7 +27,6 @@
 					<td><input type="password" name="userPwd" class="reqd" /></td>
 				</tr>
 
-
 				<tr>
 					<td><img src="PicCheckCode" id="CreateCheckCode"
 						align="middle"></td>
@@ -38,11 +36,12 @@
 
 				<tr>
 					<td align="center" colspan="2"><input type="submit"
-						name="submit" value="立即注册"></td>
+						name="submit" value="立即登录"></td>
 				</tr>
 			</table>
 		</form>
-		<a href="<%=basePath %>/reg.jsp">还没有账号，立即注册</a><br>
+		<a href="<%=basePath %>/reg.jsp">立即注册(用户注册)</a><br>
+		<!-- 将来通过权限管理的方式，实现管理员账号分配注册 -->
 		<br>
 		<br> <span style="color: red; font-weight: bold"> <%
 		if(request.getAttribute("err") != null){
